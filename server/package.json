@@ -5,7 +5,7 @@
   "main": "server.js",
   "script": {
     "start": "nodemon server.js"
-    },
+  },
   "author": "Do Thuan",
   "license": "ISC",
   "dependencies": {
