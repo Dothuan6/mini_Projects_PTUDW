@@ -60,7 +60,7 @@ exports.delete = async (req, res, next) => {
   try {
     const docGiaService = new DocGiaService(MongoDB.client);
     const document = await docGiaService.delete(req.params.id);
-    if (document === "") {
+    if (document === null) {
       return next(new ApiError(404, "Không tìm thấy độc giả"));
     }
     return res.send({ message: "Đọc giả xóa thành công" });

@@ -60,7 +60,7 @@ exports.delete = async (req, res, next) => {
   try {
     const nhanVienService = new NhanVienService(MongoDB.client);
     const document = await nhanVienService.delete(req.params.id);
-    if (document === "") {
+    if (document === null) {
       return next(new ApiError(404, "Không tìm thấy nhan vien"));
     }
     return res.send({ message: "nhan vien xóa thành công" });
