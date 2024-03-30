@@ -14,15 +14,57 @@ exports.create = async (req, res, next) => {
   }
 };
 
-exports.findAll = (req, res) => {
-  res.send({ message: "find all handler" });
+exports.findAll = async (req, res, next) => {
+  let documents = [];
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const { tenDocGia } = req.query;
+    if (tenDocGia) {
+      documents = await docGiaService.findByName(tenDocGia);
+    } else {
+      documents = await docGiaService.find({});
+    }
+  } catch (error) {
+    return next(new ApiError(500, "Co loi luc kiem doc gia"));
+  }
+  return res.send(documents);
 };
-exports.findOne = (req, res) => {
-  res.send({ message: "find one handler" });
+exports.findOne = async (req, res, next) => {
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const document = await docGiaService.findById(req.params.id);
+    if (!document) {
+      return next(new ApiError(404, "Khong tim thay doc gia"));
+    }
+    return res.send(document);
+  } catch (error) {
+    return next(new ApiError(500, "loi o tim kiem doc gia theo id"));
+  }
 };
-exports.update = (req, res) => {
-  res.send({ message: "update handler" });
+exports.update = async (req, res, next) => {
+  if (Object.keys(req.body).length === 0) {
+    return next(new ApiError(400, "Du lieu cap nhat khong duoc rong"));
+  }
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const document = await docGiaService.update(req.params.id, req.body);
+    if (document === null) {
+      return next(new ApiError(404, "Khong thay doc gia"));
+    }
+    return res.send({ message: "Doc gia cap nhat thanh cong" });
+  } catch (error) {
+    return next(new ApiError(error.message));
+  }
 };
-exports.delete = (req, res) => {
-  res.send({ message: "delete handler" });
+exports.delete = async (req, res, next) => {
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const document = await docGiaService.delete(req.params.id);
+    if (document === "") {
+      return next(new ApiError(404, "Không tìm thấy độc giả"));
+    }
+    return res.send({ message: "Đọc giả xóa thành công" });
+  } catch (error) {
+    return next(new ApiError(500, "Không thể xóa đọc giả "));
+  }
 };
