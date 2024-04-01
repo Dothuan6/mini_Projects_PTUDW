@@ -61,5 +61,12 @@ class NhanVienService {
     });
     return result.value;
   }
+  async login(payload) {
+    const filter = {
+      hoTenNhanVien: payload.hoTenNhanVien,
+      password: payload.password,
+    };
+    return await this.NhanVien.findOne(filter);
+  }
 }
 module.exports = NhanVienService;

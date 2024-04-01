@@ -68,3 +68,27 @@ exports.delete = async (req, res, next) => {
     return next(new ApiError(500, "Không thể xóa đọc giả "));
   }
 };
+exports.login = async (req, res, next) => {
+  if (!req.body?.tenDocGia || !req.body?.password) {
+    return next(new ApiError(400, "Vui lòng điền tên độc giả và mật khẩu"));
+  }
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const document = await docGiaService.login(req.body);
+    if (!document) {
+      return next(new ApiError(404, "Không tìm thấy độc giả"));
+    }
+    return res.send(document);
+  } catch (error) {
+    return next(new ApiError(error.message));
+  }
+};
+exports.logout = async (req, res, next) => {
+  try {
+    const docGiaService = new DocGiaService(MongoDB.client);
+    const document = await docGiaService.logout();
+    return res.send(document);
+  } catch (error) {
+    return next(new ApiError(error.message));
+  }
+};

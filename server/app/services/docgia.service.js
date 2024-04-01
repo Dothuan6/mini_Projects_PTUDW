@@ -6,6 +6,7 @@ class DocGiaService {
   extractDocGiaData(payload) {
     const docgia = {
       maDocGia: payload.maDocGia,
+      password: payload.password,
       hoLot: payload.hoLot,
       tenDocGia: payload.tenDocGia,
       ngaySinh: payload.ngaySinh,
@@ -61,6 +62,16 @@ class DocGiaService {
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
     return result.value;
+  }
+  async login(payload) {
+    const filter = {
+      tenDocGia: payload.tenDocGia,
+      password: payload.password,
+    };
+    return await this.DocGia.findOne(filter);
+  }
+  async logout() {
+    return { message: "Logout success" };
   }
 }
 module.exports = DocGiaService;
