@@ -46,7 +46,8 @@ export default {
         async updateBook(data) {
             try {
                 await BookService.update(this.Sach._id, data);
-                this.message = "Sách được cập nhật thành công.";
+                alert("Cập nhật thành công");
+                this.$router.push({ name: "book" });
             } catch (error) {
                 console.log(error);
             }
