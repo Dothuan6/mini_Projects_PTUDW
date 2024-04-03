@@ -14,16 +14,18 @@ export default {
   },
   created() {
     const nhanvien = JSON.parse(sessionStorage.getItem("nhanvien"));
-    // console.log(nhanvien.hoTenNhanVien)
     if (nhanvien) {
       this.isLoggedIn = true;
     }
-    // return nhanvien?.hoTenNhanVien;
   },
   methods: {
-    logout() {
-      sessionStorage.removeItem("nhanvien");
-      this.isLoggedIn = false;
+    async logout() {
+      const nhanvien = sessionStorage.removeItem("nhanvien");
+      await this.$router.push({ name: "nhanvien.login" });
+      if (nhanvien) {
+        alert("Đăng xuất thành công");
+        this.isLoggedIn = false;
+      }
       window.location.reload();
     },
   },
@@ -78,7 +80,9 @@ export default {
             </router-link>
           </li>
           <li v-if="isLoggedIn" class="nav-item">
-            <a href="#" class="nav-link" @click="logout"> Đăng xuất </a>
+            <router-link :to="{name:'nhanvien.login'}" @click="logout" class="nav-link">
+              Đăng xuất
+            </router-link>
           </li>
         </ul>
       </div>

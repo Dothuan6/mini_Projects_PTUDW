@@ -1,6 +1,6 @@
 <template>
     <div v-if="NhanVien">
-    <h4>Đăng ký nhân viên</h4>
+    <h1>Đăng ký nhân viên</h1>
     <NhanVienForm
         :NhanVien="NhanVien"
         @submit:NhanVien="addNhanVien"

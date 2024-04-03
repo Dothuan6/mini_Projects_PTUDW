@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Login nhân viên</h1>
+    <h1>Đăng nhập nhân viên</h1>
     <form @submit="login">
       <label class="form-label" for="username">Username:</label>
       <input

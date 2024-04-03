@@ -2,7 +2,7 @@
     <div class="container m-auto w-100">
         <form @submit="register">
             <div class="mb-3 w-25">
-            <label for="maNhanVien" class="form-label">Ma nhân viên</label>
+            <label for="maNhanVien" class="form-label">Mã nhân viên</label>
             <input type="text" class="form-control" id="maNhanVien" v-model="nhanVienLocal.maNhanVien" />
         </div>
         <div class="mb-3 w-25">
@@ -63,7 +63,7 @@ export default {
     methods: {
         register() {
             this.$emit('submit:NhanVien', this.nhanVienLocal)
-            this.$router.push({ name: 'book' });
+            this.$router.push({ name: 'nhanvien.login' });
         }
     }
 }   
