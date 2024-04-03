@@ -1,10 +1,16 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Book from "@/views/Book.vue";
+import ShowSachMuon from "@/views/ShowSachMuon.vue";
 const routes = [
   {
     path: "/",
     name: "book",
     component: Book,
+  },
+  {
+    path: "/sachmuon",
+    name: "sachmuon",
+    component: ShowSachMuon,
   },
   {
     path: "/book/:id",
@@ -24,15 +30,22 @@ const routes = [
     component: () => import("@/views/Error.vue"),
   },
   {
+    path: "/docgia/login",
+    name: "docgia.login",
+    component: () => import("@/views/DocGiaLog.vue"),
+  },
+  {
+    path: "/docgia/register",
+    name: "docgia.register",
+    component: () => import("@/views/DocGiaReg.vue"),
+    props: true,
+  },
+  {
     path: "/nhanvien/login",
     name: "nhanvien.login",
     component: () => import("@/views/NhanVienLog.vue"),
   },
-  // {
-  //   path: "/docgia/login",
-  //   name: "docgia.login",
-  //   component: () => import("@/views/DocGiaLogin.vue"),
-  // },
+
   {
     path: "/nhanvien/register",
     name: "nhanvien.register",

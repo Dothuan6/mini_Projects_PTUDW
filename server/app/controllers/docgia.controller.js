@@ -1,13 +1,13 @@
 const DocGiaService = require("../services/docgia.service");
 const ApiError = require("../api_error");
 const MongoDB = require("../utils/mongodb.util");
-exports.create = async (req, res, next) => {
+exports.register = async (req, res, next) => {
   if (!req.body?.tenDocGia) {
     return next(new ApiError(400, "Vui lòng điền Ten"));
   }
   try {
     const docGiaService = new DocGiaService(MongoDB.client);
-    const document = await docGiaService.create(req.body);
+    const document = await docGiaService.register(req.body);
     return res.send(document);
   } catch (error) {
     return next(new ApiError(error.message));

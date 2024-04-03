@@ -1,37 +1,50 @@
 <script>
 import InputSearch from "@/components/InputSearch.vue";
 import NhanVienLog from "@/views/NhanVienLog.vue";
+import DocGiaLog from "@/views/DocGiaLog.vue";
 import { ref } from "vue";
 export default {
   components: {
     InputSearch,
-    NhanVienLog,
+      NhanVienLog,
+      DocGiaLog
   },
   data() {
     return {
       isLoggedIn: false,
+      isLoggedInDocGia: false,
     };
   },
   created() {
+    const docgia = JSON.parse(sessionStorage.getItem("docgia"));
     const nhanvien = JSON.parse(sessionStorage.getItem("nhanvien"));
     if (nhanvien) {
       this.isLoggedIn = true;
+    }
+    if(docgia){
+      this.isLoggedInDocGia = true;
     }
   },
   methods: {
     async logout() {
       const nhanvien = sessionStorage.removeItem("nhanvien");
+      const docgia = sessionStorage.removeItem("docgia");
       await this.$router.push({ name: "nhanvien.login" });
       if (nhanvien) {
         alert("Đăng xuất thành công");
         this.isLoggedIn = false;
+      }
+      if(docgia){
+        alert("Đăng xuất thành công");
+        this.isLoggedInDocGia = false;
       }
       window.location.reload();
     },
   },
   setup() {
     const nhanvien = ref(JSON.parse(sessionStorage.getItem("nhanvien")));
-    return { nhanvien };
+    const docgia = ref(JSON.parse(sessionStorage.getItem("docgia")));
+    return { nhanvien,docgia };
   },
 };
 </script>
@@ -40,6 +53,9 @@ export default {
     <div class="container-fluid">
       <a v-if="isLoggedIn" href="/" class="navbar-brand"
         >Quản lý {{ nhanvien.hoTenNhanVien }}</a
+      >
+      <a v-if="isLoggedInDocGia" href="#" class="navbar-brand"
+        >Xin chào {{ docgia.tenDocGia }}</a
       >
       <button
         class="navbar-toggler"
@@ -59,6 +75,11 @@ export default {
               Sách
             </router-link>
           </li>
+          <li v-if="isLoggedInDocGia" class="nav-item">
+            <router-link :to="{ name: 'sachmuon' }" class="nav-link">
+              Sách mượn
+            </router-link>
+          </li>
           <li v-if="isLoggedIn" class="nav-item">
             <router-link :to="{ name: 'showdocgia' }" class="nav-link">
               Độc giả
@@ -69,19 +90,29 @@ export default {
               Nhà xuất bản
             </router-link>
           </li>
-          <li v-if="!isLoggedIn" class="nav-item">
+          <li v-if="!isLoggedIn  && !isLoggedInDocGia" class="nav-item">
             <router-link :to="{ name: 'nhanvien.register' }" class="nav-link">
-              Đăng ký
+              Đăng ký quản lý
             </router-link>
           </li>
-          <li v-if="!isLoggedIn" class="nav-item">
+          <li v-if="!isLoggedIn && !isLoggedInDocGia" class="nav-item">
             <router-link :to="{ name: 'nhanvien.login' }" class="nav-link">
-              Đăng nhập
+              Đăng nhập quản lý
             </router-link>
           </li>
-          <li v-if="isLoggedIn" class="nav-item">
+          <li v-if="isLoggedIn || isLoggedInDocGia" class="nav-item">
             <router-link :to="{name:'nhanvien.login'}" @click="logout" class="nav-link">
               Đăng xuất
+            </router-link>
+          </li>
+          <li v-if="!isLoggedIn  && !isLoggedInDocGia" class="nav-item">
+            <router-link :to="{ name: 'docgia.register' }" class="nav-link">
+              Đăng ký đọc giả
+            </router-link>
+          </li>
+          <li v-if="!isLoggedIn && !isLoggedInDocGia " class="nav-item">
+            <router-link :to="{ name: 'docgia.login' }" class="nav-link">
+              Đăng nhập đọc giả
             </router-link>
           </li>
         </ul>

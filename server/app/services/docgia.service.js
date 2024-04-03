@@ -19,7 +19,7 @@ class DocGiaService {
     );
     return docgia;
   }
-  async create(payload) {
+  async register(payload) {
     const docgia = this.extractDocGiaData(payload);
     const result = await this.DocGia.findOneAndUpdate(
       docgia,
@@ -69,9 +69,6 @@ class DocGiaService {
       password: payload.password,
     };
     return await this.DocGia.findOne(filter);
-  }
-  async logout() {
-    return { message: "Logout success" };
   }
 }
 module.exports = DocGiaService;
