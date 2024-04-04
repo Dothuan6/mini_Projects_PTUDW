@@ -1,8 +1,8 @@
 <script>
-import DocGiaList from "../components/DocGiaList.vue";
-import DocGiaService from "../services/docgia.service";
-import DocGiaCard from "../components/DocGiaCard.vue";
-import InputSearch from "../components/InputSearch.vue";
+import DocGiaList from "@/components/docgia/DocGiaList.vue";
+import DocGiaService from "@/services/docgia.service";
+import DocGiaCard from "@/components/docgia/DocGiaCard.vue";
+import InputSearch from "@/components/includes/InputSearch.vue";
 export default {
   components: {
     DocGiaList,

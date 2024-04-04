@@ -1,6 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Book from "@/views/Book.vue";
-import ShowSachMuon from "@/views/ShowSachMuon.vue";
+import Book from "@/views/book/Book.vue";
+import ShowSachMuon from "@/views/muonsach/ShowSachMuon.vue";
+import MuonSach from "@/views/muonsach/MuonSachAdd.vue";
+import QuanLySachMuon from "@/views/muonsach/MuonSach.vue";
 const routes = [
   {
     path: "/",
@@ -13,15 +15,26 @@ const routes = [
     component: ShowSachMuon,
   },
   {
+    path: "/quanlysachmuon",
+    name: "quanlysachmuon",
+    component: QuanLySachMuon,
+  },
+  {
+    path: "/sachmuon/add",
+    name: "sachmuon.add",
+    component: MuonSach,
+    props: true,
+  },
+  {
     path: "/book/:id",
     name: "book.edit",
-    component: () => import("@/views/BookEdit.vue"),
+    component: () => import("@/views/book/BookEdit.vue"),
     props: true,
   },
   {
     path: "/book/add",
     name: "book.add",
-    component: () => import("@/views/BookAdd.vue"),
+    component: () => import("@/views/book/BookAdd.vue"),
     props: true,
   },
   {
@@ -32,48 +45,48 @@ const routes = [
   {
     path: "/docgia/login",
     name: "docgia.login",
-    component: () => import("@/views/DocGiaLog.vue"),
+    component: () => import("@/views/docgia/DocGiaLog.vue"),
   },
   {
     path: "/docgia/register",
     name: "docgia.register",
-    component: () => import("@/views/DocGiaReg.vue"),
+    component: () => import("@/views/docgia/DocGiaReg.vue"),
     props: true,
   },
   {
     path: "/nhanvien/login",
     name: "nhanvien.login",
-    component: () => import("@/views/NhanVienLog.vue"),
+    component: () => import("@/views/nhanvien/NhanVienLog.vue"),
   },
 
   {
     path: "/nhanvien/register",
     name: "nhanvien.register",
-    component: () => import("@/views/NhanVienReg.vue"),
+    component: () => import("@/views/nhanvien/NhanVienReg.vue"),
     props: true,
   },
   {
     path: "/docgia",
     name: "showdocgia",
-    component: () => import("@/views/ShowDocGia.vue"),
+    component: () => import("@/views/docgia/ShowDocGia.vue"),
     // props: true,
   },
   {
     path: "/nxb",
     name: "shownxb",
-    component: () => import("@/views/ShowNhaXuatBan.vue"),
+    component: () => import("@/views/nhaxuatban/ShowNhaXuatBan.vue"),
     // props: true,
   },
   {
     path: "/nxb/add",
     name: "nxb.add",
-    component: () => import("@/views/NhaXuatBanAdd.vue"),
+    component: () => import("@/views/nhaxuatban/NhaXuatBanAdd.vue"),
     props: true,
   },
   {
     path: "/nxb/:id",
     name: "nxb.edit",
-    component: () => import("@/views/NhaXuatBanEdit.vue"),
+    component: () => import("@/views/nhaxuatban/NhaXuatBanEdit.vue"),
     props: true,
   },
 ];

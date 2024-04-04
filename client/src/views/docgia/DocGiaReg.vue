@@ -9,7 +9,7 @@
     </div>
 </template>
 <script>
-import DocGiaForm from "@/components/DocGiaRegForm.vue";
+import DocGiaForm from "@/components/docgia/DocGiaRegForm.vue";
 import DocGiaService from "@/services/docgia.service";
 export default {
     components: {

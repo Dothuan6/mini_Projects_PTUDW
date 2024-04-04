@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BookForm from "@/components/BookForm.vue";
+import BookForm from "@/components/book/BookForm.vue";
 import BookService from "@/services/book.service";
 
 export default {

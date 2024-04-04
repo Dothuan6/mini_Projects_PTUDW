@@ -1,7 +1,7 @@
 <script>
-import InputSearch from "@/components/InputSearch.vue";
-import NhanVienLog from "@/views/NhanVienLog.vue";
-import DocGiaLog from "@/views/DocGiaLog.vue";
+import InputSearch from "@/components/includes/InputSearch.vue";
+import NhanVienLog from "@/views/nhanvien/NhanVienLog.vue";
+import DocGiaLog from "@/views/docgia/DocGiaLog.vue";
 import { ref } from "vue";
 export default {
   components: {
@@ -88,6 +88,11 @@ export default {
           <li v-if="isLoggedIn" class="nav-item">
             <router-link :to="{ name: 'shownxb' }" class="nav-link">
               Nhà xuất bản
+            </router-link>
+          </li>
+           <li v-if="isLoggedIn" class="nav-item">
+            <router-link :to="{ name: 'quanlysachmuon' }" class="nav-link">
+              Quản lý sách mượn
             </router-link>
           </li>
           <li v-if="!isLoggedIn  && !isLoggedInDocGia" class="nav-item">

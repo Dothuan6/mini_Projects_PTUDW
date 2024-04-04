@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import NhaXuatBanForm from "@/components/NhaXuatBanForm.vue";
+import NhaXuatBanForm from "@/components/nhaxuatban/NhaXuatBanForm.vue";
 import NhaXuatBanService from "@/services/nhaxuatban.service";
 export default {
   components: {

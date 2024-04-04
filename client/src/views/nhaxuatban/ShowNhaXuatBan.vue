@@ -1,8 +1,8 @@
 <script>
-import NhaXuatBanService from "../services/nhaxuatban.service";
-import NhaXuatBanCard from "../components/NhaXuatBanCard.vue";
-import InputSearch from "../components/InputSearch.vue";
-import NhaXuatBanList from "../components/NhaXuatBanList.vue";
+import NhaXuatBanService from "@/services/nhaxuatban.service";
+import NhaXuatBanCard from "@/components/nhaxuatban/NhaXuatBanCard.vue";
+import InputSearch from "@/components/includes/InputSearch.vue";
+import NhaXuatBanList from "@/components/nhaxuatban/NhaXuatBanList.vue";
 export default {
   components: {
     NhaXuatBanCard,

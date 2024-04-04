@@ -6,9 +6,12 @@ class MuonSachService {
   extractMuonSachData(payload) {
     const muonsach = {
       maDocGia: payload.maDocGia,
+      tenDocGia: payload.tenDocGia,
       maSach: payload.maSach,
+      tenSach: payload.tenSach,
       ngayMuon: payload.ngayMuon,
       ngayTra: payload.ngayTra,
+      tinhTrang: payload.tinhTrang,
     };
     Object.keys(muonsach).forEach(
       (key) => muonsach[key] === undefined && delete muonsach[key]
