@@ -98,7 +98,12 @@ export default {
       <div v-if="activeBook">
         <h4>Chi Tiết Sách</h4>
         <BookCard :Sach="activeBook" />
-       
+        <router-link
+          :to="{ name: 'sachmuon.add'}"
+          class="btn btn-success my-3 col-md-4 mb-2 mt-3 mx-2"
+        >
+          Mượn Sách
+        </router-link>
       </div>
     </div>
   </div>

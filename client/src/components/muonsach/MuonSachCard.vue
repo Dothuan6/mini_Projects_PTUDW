@@ -31,9 +31,5 @@ export default {
             <strong>Ngày trả:</strong>
             {{ muonSach.ngayTra }}
         </div>
-        <div class="p-1">
-            <strong>Trạng thái:</strong>
-            {{ muonSach.tinhTrang }}
-        </div>
     </div>
 </template>

@@ -3,6 +3,7 @@ import Book from "@/views/book/Book.vue";
 import ShowSachMuon from "@/views/muonsach/ShowSachMuon.vue";
 import MuonSach from "@/views/muonsach/MuonSachAdd.vue";
 import QuanLySachMuon from "@/views/muonsach/MuonSach.vue";
+import SachDaMuon from "@/views/muonsach/SachDaMuon.vue";
 const routes = [
   {
     path: "/",
@@ -18,6 +19,11 @@ const routes = [
     path: "/quanlysachmuon",
     name: "quanlysachmuon",
     component: QuanLySachMuon,
+  },
+  {
+    path: "/sachdamuon",
+    name: "sachdamuon",
+    component: SachDaMuon,
   },
   {
     path: "/sachmuon/add",

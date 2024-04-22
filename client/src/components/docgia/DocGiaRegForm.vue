@@ -80,6 +80,7 @@
 </template>
 <script>
 import { Form } from "vee-validate";
+import {toast} from 'vue3-toastify';
 export default {
   components: {
     Form,
@@ -107,6 +108,17 @@ export default {
   },
   methods: {
     register(e) {
+      if (!this.docgiaLocal.maDocGia ||
+        !this.docgiaLocal.password ||
+        !this.docgiaLocal.hoLot ||
+        !this.docgiaLocal.tenDocGia ||
+        !this.docgiaLocal.ngaySinh ||
+        !this.docgiaLocal.gioiTinh ||
+        !this.docgiaLocal.diaChi ||
+        !this.docgiaLocal.dienThoai) {
+        alert('vui lòng điền đầy đủ thông tin');
+      return;
+    }
       e.preventDefault();
       this.$emit("submit:DocGia", this.docgiaLocal);
       

@@ -3,6 +3,8 @@ import InputSearch from "@/components/includes/InputSearch.vue";
 import NhanVienLog from "@/views/nhanvien/NhanVienLog.vue";
 import DocGiaLog from "@/views/docgia/DocGiaLog.vue";
 import { ref } from "vue";
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css'
 export default {
   components: {
     InputSearch,
@@ -42,6 +44,15 @@ export default {
     },
   },
   setup() {
+    if(sessionStorage.getItem("nhanvien") || sessionStorage.getItem("docgia")){
+      toast.success('Chào mừng bạn đến với BookStore của tôi',{
+      timeout: 1000,
+      });
+    }else{
+      toast.error('Vui lòng đăng nhập',{
+      timeout: 1000,
+      });
+    }
     const nhanvien = ref(JSON.parse(sessionStorage.getItem("nhanvien")));
     const docgia = ref(JSON.parse(sessionStorage.getItem("docgia")));
     return { nhanvien,docgia };
@@ -78,6 +89,11 @@ export default {
           <li v-if="isLoggedInDocGia" class="nav-item">
             <router-link :to="{ name: 'sachmuon' }" class="nav-link">
               Sách mượn
+            </router-link>
+          </li>
+          <li v-if="isLoggedInDocGia" class="nav-item">
+            <router-link :to="{ name: 'sachdamuon' }" class="nav-link">
+              Sách đã mượn
             </router-link>
           </li>
           <li v-if="isLoggedIn" class="nav-item">

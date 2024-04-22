@@ -11,7 +11,7 @@ class MuonSachService {
       tenSach: payload.tenSach,
       ngayMuon: payload.ngayMuon,
       ngayTra: payload.ngayTra,
-      tinhTrang: payload.tinhTrang,
+      trangThai: payload.trangThai,
     };
     Object.keys(muonsach).forEach(
       (key) => muonsach[key] === undefined && delete muonsach[key]

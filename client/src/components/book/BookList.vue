@@ -13,15 +13,14 @@ export default {
 };
 </script>
 <template>
-  <ul class="list-group">
-    <li
-      class="list-group-item"
+  <div class="card mb-2"
       v-for="(sach, index) in Sach"
       :key="sach._id"
       :class="{ active: index === activeIndex }"
-      @click="updateActiveIndex(index)"
-    >
-      {{ sach.tenSach }} - {{ sach.tacGia }}
-    </li>
-  </ul>
+      @click="updateActiveIndex(index)" style="width: 18rem;">
+  <div  class="card-body">
+    <h5 class="card-title">{{ sach.tenSach }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted"> {{ sach.tacGia }}</h6>
+  </div>
+</div>
 </template>

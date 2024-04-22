@@ -12,7 +12,9 @@
 import MuonSachForm from "@/components/muonsach/MuonSachForm.vue";
 import MuonSachService from "@/services/muonsach.service"
 import BookService from "@/services/book.service";
-export default {
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css'
+export default { 
     components: {
         MuonSachForm,
 
@@ -27,13 +29,15 @@ export default {
         async addMuonSach(data) {
             try {
                 await MuonSachService.create(data);
-                await localStorage.setItem("muonSach", JSON.stringify(data));
-                alert("Mượn sách thành công");
-                this.$router.push("/quanlysachmuon");
+                toast.success("Mượn sách thành công");
+                const {_id} = 
+                BookService.update(_id, {soQuyen:this.soQuyen-1});
+                this.$router.push("/sachmuon");
             } catch (error) {
                 console.log(error);
             }
         },
+        
     },
     created() {
     },

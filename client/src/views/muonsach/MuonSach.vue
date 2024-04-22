@@ -103,21 +103,16 @@ export default {
         >
           Làm mới
         </button>
-        <router-link
-          :to="{ name: 'sachmuon.add'}"
-          class="btn btn-success my-3 col-md-4 mb-2 mt-3 mx-2"
-        >
-          Mượn Sách
-        </router-link>
+        
       </div>
     </div>
     <div class="col-md-5 mt-3">
       <div v-if="activeMuonSach">
         <h4>Chi tiết mượn sách</h4>
         <MuonSachCard :muonSach="activeMuonSach" />
-        <span class="btn btn-warning my-2" @click="deleteMuonSach(activeMuonSach._id)">
+        <button class="btn btn-warning my-2" @click="deleteMuonSach(activeMuonSach._id)">
           Trả sách
-        </span>
+        </button>
       </div>
     </div>
   </div>

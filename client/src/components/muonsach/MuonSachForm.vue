@@ -62,18 +62,6 @@
             v-model="muonSachLocal.ngayTra"
           />
         </div>
-        <div class="form-group">
-          <label class="mb-2" for="tinhTrang">Tình trạng</label>
-          <select
-            name="tinhTrang"
-            id="tinhTrang"
-            class="form-control"
-            v-model="muonSachLocal.tinhTrang"
-          >
-            <option value="Đã trả">Đã trả</option>
-            <option value="Chưa trả">Chưa trả</option>
-          </select>
-        </div>
         <button type="submit" class="btn mt-3 btn-primary">Xác nhận</button>
       </Form>
     </div>

@@ -24,6 +24,8 @@
 </template>
 <script>
 import axios from "axios";
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css'
 export default {
   data() {
     return {
@@ -43,7 +45,9 @@ export default {
         })
         .then(async (response) => {
           const nhanvien = response.data;
-          alert("Đăng nhập thành công");
+          toast.success("Đăng nhập thành công", {
+            timeout: 1000,
+          });
           sessionStorage.setItem("nhanvien", JSON.stringify(nhanvien));
           await this.$router.push("/");
           window.location.reload();
