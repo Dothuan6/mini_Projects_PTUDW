@@ -26,7 +26,7 @@ const routes = [
     component: SachDaMuon,
   },
   {
-    path: "/sachmuon/add",
+    path: "/sachmuon/add/:id",
     name: "sachmuon.add",
     component: MuonSach,
     props: true,

@@ -62,6 +62,12 @@
             v-model="muonSachLocal.ngayTra"
           />
         </div>
+        <div class="form-group">
+          <label for="trangThai">Trạng thái</label>
+          <select id="trangThai" name="trangThai" v-model="muonSachLocal.trangThai">
+          <option value="Đã mượn">Đã mượn</option>
+          </select>
+        </div>
         <button type="submit" class="btn mt-3 btn-primary">Xác nhận</button>
       </Form>
     </div>
@@ -69,6 +75,7 @@
 </template>
 <script>
 import { Form, Field } from "vee-validate";
+import {toast} from 'vue3-toastify';
 export default {
   components: {
     Form,
@@ -85,7 +92,28 @@ export default {
   },
   methods: {
     submitMuonSach() {
+      if (
+      !this.muonSachLocal.maSach) {
+      toast.error("Vui lòng điền đầy đủ thông tin mã sách và các thông tin còn lại.");
+      return;
+    }else if(!this.muonSachLocal.maDocGia){
+      toast.error("Vui lòng điền đầy đủ thông tin mã đọc giả và các thông tin còn lại.");
+      return;
+    }else if(!this.muonSachLocal.ngayMuon){
+      toast.error("Vui lòng điền đầy đủ thông tin ngày mượn và các thông tin còn lại.");
+      return;
+    }else if(!this.muonSachLocal.ngayTra){
+      toast.error("Vui lòng điền đầy đủ thông tin ngày trả và các thông tin còn lại.");
+      return;
+    }else if(!this.muonSachLocal.tenSach){
+      toast.error("Vui lòng điền đầy đủ thông tin tên sách và các thông tin còn lại.");
+      return;
+    }else if(!this.muonSachLocal.tenDocGia){
+      toast.error("Vui lòng điền đầy đủ thông tin tên đọc giả và các thông tin còn lại.");
+      return;
+    }
       this.$emit("submit:muonSach", this.muonSachLocal);
+      
     },
   },
 };

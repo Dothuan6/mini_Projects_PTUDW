@@ -1,5 +1,5 @@
 <template>
-    <div v-if="NhanVien">
+    <div class="bg-warning mb-2 p-3 w-50" v-if="NhanVien">
     <h1>Đăng ký nhân viên</h1>
     <NhanVienForm
         :NhanVien="NhanVien"

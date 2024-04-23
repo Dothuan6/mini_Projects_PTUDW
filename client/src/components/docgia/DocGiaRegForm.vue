@@ -1,7 +1,7 @@
 <template>
   <div class="container m-auto w-100">
     <form @submit="register">
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="maDocGia" class="form-label">Mã đọc giả</label>
         <input
           type="text"
@@ -10,7 +10,7 @@
           v-model="docgiaLocal.maDocGia"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="password" class="form-label">Mật khẩu</label>
         <input
           type="password"
@@ -19,7 +19,7 @@
           v-model="docgiaLocal.password"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="hoLot" class="form-label">Họ lót</label>
         <input
           type="text"
@@ -28,7 +28,7 @@
           v-model="docgiaLocal.hoLot"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="tenDocGia" class="form-label">Tên Đọc giả</label>
         <input
           type="text"
@@ -37,7 +37,7 @@
           v-model="docgiaLocal.tenDocGia"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="ngaySinh" class="form-label">Ngày sinh</label>
         <input
           type="date"
@@ -46,7 +46,7 @@
           v-model="docgiaLocal.ngaySinh"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="gioiTinh" class="form-label">Giới tính</label>
         <input
           type="text"
@@ -55,7 +55,7 @@
           v-model="docgiaLocal.gioiTinh"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="diaChi" class="form-label">Địa chỉ</label>
         <input
           type="text"
@@ -64,7 +64,7 @@
           v-model="docgiaLocal.diaChi"
         />
       </div>
-      <div class="mb-3 w-25">
+      <div class="mb-3 w-50">
         <label for="dienThoai" class="form-label">Số điện thoại</label>
         <input
           type="text"
@@ -116,7 +116,7 @@ export default {
         !this.docgiaLocal.gioiTinh ||
         !this.docgiaLocal.diaChi ||
         !this.docgiaLocal.dienThoai) {
-        alert('vui lòng điền đầy đủ thông tin');
+        toast.error('Vui lòng nhập đầy đủ thông tin');
       return;
     }
       e.preventDefault();

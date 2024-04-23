@@ -60,7 +60,14 @@ export default {
 };
 </script>
 <template>
+  <div v-if="isLoggedIn" class="text-center mb-3 fs-3 bg-success p-2 border border-3">
+      Chào mừng bạn đến với trang quản lý
+    </div>
+    <div v-if="isLoggedInDocGia" class="text-center mb-3 fs-3 bg-success p-2 border border-3">
+      Chào mừng bạn đến với trang độc giả
+    </div>
   <nav class="navbar navbar-expand navbar-dark bg-dark">
+    
     <div class="container-fluid">
       <a v-if="isLoggedIn" href="/" class="navbar-brand"
         >Quản lý {{ nhanvien.hoTenNhanVien }}</a
@@ -121,23 +128,25 @@ export default {
               Đăng nhập quản lý
             </router-link>
           </li>
-          <li v-if="isLoggedIn || isLoggedInDocGia" class="nav-item">
-            <router-link :to="{name:'nhanvien.login'}" @click="logout" class="nav-link">
-              Đăng xuất
-            </router-link>
-          </li>
           <li v-if="!isLoggedIn  && !isLoggedInDocGia" class="nav-item">
             <router-link :to="{ name: 'docgia.register' }" class="nav-link">
-              Đăng ký đọc giả
+              Đăng ký độc giả
             </router-link>
           </li>
           <li v-if="!isLoggedIn && !isLoggedInDocGia " class="nav-item">
             <router-link :to="{ name: 'docgia.login' }" class="nav-link">
-              Đăng nhập đọc giả
+              Đăng nhập độc giả
             </router-link>
           </li>
+          
         </ul>
+       
       </div>
+     <div v-if="isLoggedIn || isLoggedInDocGia" class="nav-item">
+            <router-link :to="{name:'nhanvien.login'}" @click="logout" class="nav-link">
+              Đăng xuất  <i class="fa-solid fa-circle-right"></i>
+            </router-link>
+     </div>
     </div>
   </nav>
 </template>

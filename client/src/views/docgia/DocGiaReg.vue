@@ -1,5 +1,5 @@
 <template>
-    <div v-if="DocGia">
+    <div class="bg-warning mb-2 p-3 w-50" v-if="DocGia">
     <h1>Đăng ký đọc giả</h1>
     <DocGiaForm
         :DocGia="DocGia"

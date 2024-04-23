@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="bg-warning mb-2 p-3 w-50">
     <h1>Đăng nhập nhân viên</h1>
     <form @submit="login">
       <label class="form-label" for="username">Username:</label>
       <input
-        class="form-control w-25"
+        class="form-control w-50"
         type="text"
         id="username"
         v-model="hoTenNhanVien"
@@ -12,13 +12,13 @@
       />
       <label class="form-label mt-2" for="password">Password:</label>
       <input
-        class="form-control w-25"
+        class="form-control w-50"
         type="password"
         id="password"
         v-model="password"
         required
       />
-      <button class="btn btn-primary my-2" type="submit">Login</button>
+      <button class="btn btn-success my-2" type="submit">Login</button>
     </form>
   </div>
 </template>

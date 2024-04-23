@@ -13,15 +13,18 @@ export default{
 }
 </script>
 <template>
-    <ul class="list-group">
-        <li
-            class="list-group-item"
+    <div class="card mb-2"
             v-for="(nxb, index) in nhaXuatBan"
             :key="nxb._id"
             :class="{ active: index === activeIndex }"
-            @click="updateActiveIndex(index)"
-        >
-            {{ nxb.tenNXB }} - {{ nxb.maNXB }}
-        </li>
-    </ul>
+            @click="updateActiveIndex(index)">
+        <div class="card-body">
+            <h5 class="card-title">
+                Tên NXB: {{ nxb.tenNXB }}
+            </h5>
+            <h6 class="card-subtitle  mb-2 text-muted">
+                Địa chỉ: {{ nxb.diaChi }}
+            </h6>
+    </div>
+    </div>
 </template>

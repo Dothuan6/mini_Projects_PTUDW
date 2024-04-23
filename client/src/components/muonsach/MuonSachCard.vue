@@ -2,6 +2,7 @@
 export default {
     props: {
         muonSach: { type: Object, required: true },
+        
     },
 };
 </script>
@@ -30,6 +31,10 @@ export default {
         <div class="p-1">
             <strong>Ngày trả:</strong>
             {{ muonSach.ngayTra }}
+        </div>
+        <div class="p-1">
+            <strong>Tình trạng:</strong>
+            {{ muonSach.trangThai }}
         </div>
     </div>
 </template>
